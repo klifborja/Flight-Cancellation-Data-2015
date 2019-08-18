@@ -1,22 +1,19 @@
 body {
-    font-family: 'Exo, ''Open Sans', sans-serif;
+    font-family: 'Open Sans Condensed', sans-serif;
   }
   .title-holder {
     text-align: center;
   }
   .title {
-    font-family: 'Exo', 'Open Sans', 'Lato', sans-serif;
-  }
-  .subtitle {
-    font-size: 20px;
+    font-family: 'Open Sans Condensed', sans-serif;
   }
   .font {
-    font-size: 18px;
+    font-size: 20px;
   }
   
   /* legend */
   .legend {
-    font-size: 18px;
+    font-size: 20px;
   }
   rect {
     cursor: pointer; 
@@ -28,11 +25,11 @@ body {
   
   /* chart */
   #chart {
-    height: 600px;
+    height: 800px;
     margin: 0 auto;
     position: relative;
     display: block;
-    width: 1500px;
+    width: 800px; 
   }
   
   /* tooltip */
@@ -47,7 +44,7 @@ body {
     position: absolute;
     text-align: center;
     top: 95px;
-    width: 120px;
+    width: 80px;
     z-index: 10;
   }
   
