@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/leaflet@1.3.3/dist/leaflet.js"
   integrity="sha512-tAGcCfR4Sc5ZP5ZoVz0quoZDYX5aCtEm/eu1KhSLj2c9eFrylXZknQYmxUssFaVJKvvc0dJQixhGjG2yXWiV9Q=="
   crossorigin=""></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"></link>
 
   
@@ -20,21 +21,128 @@
 </head>
 
 <body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-12 jumbotron text-center">
+            <h1>Flight Delays</h1>
+            <p>Use the interactive charts below to explore the dataset</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-2">
+            <div class="well">
+              <h5><strong>SELECT Flight:</strong></h5>
+              <select id="selDataset" onchange="optionChanged(this.value)"></select>
+            </div>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">Airport Data</h3>
+              </div>
+              <div id="sample-metadata" class="panel-body"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-holder">
+                    <h1 class="title">2015 US Airline Flight Data</h1>
+                    <p class="subtitle">Totals measured in minutes</p>
+                    <p class="font">Uncheck labels to compare data across all airlines</p>
+                </div>
+                <!-- <style>
+                    .axis .domain {
+                        display: none;
+                    }
+                </style>
+                <svg width="960" height="500"></svg> -->
+            
+                <div id="chart"></div>
+  
+            </div>
+          </div>
+
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-holder">
+                    <h1 class="title">2015 Monthly Flight Cancellation Rate By Airlines:</h1>
+                </div>
+  
+  
+                <select id="selectButton"></select>
+                <div id="my_dataviz"></div>
+                <div id="display-result"></div>
+  
+            </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-12">
+              <div class="title-holder">
+                  <h1 class="title">2015 US Airline Delays</h1>
+                  <p class="subtitle">Total delays per airline measured in minutes</p>
+                  <p class="font">Uncheck labels to compare specific airlines.</p>
+              </div>
+
+
+              <div id="chart"></div>
+              <div class="tooltip">
+                  <div class="label">
+                  </div>
+                  <div class="count">
+                  </div>
+                  <div class="percent">
+                  </div>
+              </div>
+
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="title-holder">
+                    <h1 class="title">2015 Reasons for Flight Cancellations</h1>
+                    <h2 class="subtitle">Summary of Cancellations across all Airlines: <span class="new-total-holder"></span></h2>
+                    <p class="font">Uncheck categories to compare data.</p>
+                </div>
+  
+  
+                <div id="chart"></div>
+  
+            </div>
+          </div>
+        
+    
+        <div class="row">
+          <div class="col-md-12">
+            <div id="map"></div>
+          </div>
+        </div>
+    
+      </div>
+
+
+
+
   <!-- The div where we will inject our map -->
-  <div id="map"></div>
+  <!-- <div id="map"></div> -->
   <!-- API key -->
   <!-- <script type="text/javascript" src="../static/js/config.js"></script> -->
   <!-- Our JS -->
   <!-- <script type="text/javascript" src="../static/js/logic.js"></script> -->
-
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.9.1/d3-tip.js"></script>
+  <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.min.js"></script>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
   <script src="{{ url_for('static', filename='js/config.js') }}"></script>
   <script src="{{ url_for('static', filename='js/logic.js') }}"></script>
-  
- 
-  
-
 
 </body>
 </html>
