@@ -1,4 +1,4 @@
-// leaflet map
+// LEAFLET MAP
 var originAirportUrl = "/origin_code_all";
 
 d3.json(originAirportUrl).then(function(data) {
@@ -13,31 +13,6 @@ d3.json(originAirportUrl).then(function(data) {
   function markerSize2(mean_arrival_delay) {
     return mean_arrival_delay * 3500;
   }
-
-  // var data = [
-  //   {
-  //   "flight_count": 32467,
-  //   "flight_count_delay_ratio": 15300.180793053372,
-  //   "mean_arrival_delay": 2.1220010690815334,
-  //   "origin_airport": "MKE",
-  //   "origin_airport_name": "General Mitchell International Airport",
-  //   "origin_city": "Milwaukee",
-  //   "origin_latitude": 42.94722,
-  //   "origin_longitude": -87.89658,
-  //   "origin_state": "WI"
-  //   },
-  //   {
-  //     "flight_count": 2058,
-  //     "flight_count_delay_ratio": 54687.92,
-  //     "mean_arrival_delay": 0.03763171098845961,
-  //     "origin_airport": "LCH",
-  //     "origin_airport_name": "Lake Charles Regional Airport",
-  //     "origin_city": "Lake Charles",
-  //     "origin_latitude": 30.1261,
-  //     "origin_longitude": -93.2234,
-  //     "origin_state": "LA"
-  //   }
-  // ]
 
 
   // Define arrays to hold created city and state markers
@@ -113,12 +88,11 @@ d3.json(originAirportUrl).then(function(data) {
     collapsed: false
   }).addTo(myMap);
 
-
 })
 
 
 
-// line chart
+// LINE CHART
 
 var cancellationUrl = "/line";
 
@@ -259,14 +233,11 @@ d3.json(cancellationUrl).then(function(data) {
         .attr("class", "axisText")
         .text("Month");
 
-
 })
 
 
 
-
-
-// pie chart
+// PIE CHART
 var airlineUrl = "/pie";
 
 d3.json(airlineUrl).then(function(dataset) {
@@ -415,7 +386,7 @@ d3.json(airlineUrl).then(function(dataset) {
 })
 
 
-// Donut1 graph
+// DONUT 1 GRAPH
 var donut1Url = "/donut1";
 
 d3.json(donut1Url).then(function(dataset) {
@@ -533,7 +504,7 @@ d3.json(donut1Url).then(function(dataset) {
 })
 
 
-// Donut2 graph
+// DONUT 2 GRAPH
 
 var donut2Url = "/donut2";
 
@@ -695,7 +666,7 @@ d3.json(donut2Url).then(function(dataset) {
 
 })
 
-// Bar graph
+// BAR GRAPH
 var barUrl = "/bar";
 
 d3.json(barUrl, function (d, i, columns) {
@@ -704,9 +675,6 @@ d3.json(barUrl, function (d, i, columns) {
   }).then(function(data) {
     console.log(data)
 
-
-
-  
   var svg = d3.select("svg"),
   margin = { top: 20, right: 20, bottom: 30, left: 40 },
   width = +svg.attr("width") - margin.left - margin.right,
@@ -729,7 +697,9 @@ d3.json(barUrl, function (d, i, columns) {
   .range(["#009FFF", "#FF3F00", "#FFBF00", "#029F00"]);
 
 
-  var keys = data.columns.slice(0, 4); 
+  var keys = Object.keys(data[0]).filter(h => h !== "airline");
+  console.log(keys);
+
 
   console.log('keys');
   console.log(keys);
@@ -885,7 +855,6 @@ d3.json(barUrl, function (d, i, columns) {
               }
           })
           .duration(100);
-
 
   }
 

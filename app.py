@@ -186,8 +186,6 @@ def line():
     return jsonify(cancellations_all)
 
 
-
-
 # PIE CHART end point
 @app.route("/pie")
 def pie():
@@ -357,35 +355,7 @@ def tobs():
     #print(rank_origin_delay)
     return jsonify(rank_origin_delay)
 
-
-
-
-
-
-
-# @app.route("/destination_airport/<destination_airport>")
-# def destination_airport(destination_airport):
-#     """Return `destination_airport_name`, `destination_city`, `destination_state` and `mean_departure_delay`. """
-#     stmt = db.session.query(Destinations).statement
-#     df = pd.read_sql_query(stmt, db.session.bind)
-
-#     # Filter the data based on the sample number and
-#     # only keep rows with values above 1
-#     sample_data = df.loc[df["mean_departure_delay"] > 0, ["destination_airport_name", "destination_city", "destination_state", destination_airport]]
-
-#     # Sort by sample
-#     sample_data.sort_values(by=destination_airport, ascending=False, inplace=True)
-
-#     # Format the data to send as json
-#     data = {
-#         "destination_airport_name": sample_data.destination_airport_name.tolist(),
-#         "destination_airport": sample_data[destination_airport].tolist(),
-#         "destination_city": sample_data.destination_city.tolist(),
-#         "destination_state": sample_data.destination_state.tolist(),
-#         "mean_departure_delay": sample_data.mean_departure_delay.values.tolist(),
-#     }
-#     return jsonify(data)
-
+    
 
 if __name__ == "__main__":
     app.run(debug=True)
