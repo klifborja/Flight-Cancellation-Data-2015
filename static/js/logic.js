@@ -1,5 +1,5 @@
 // LEAFLET MAP
-var originAirportUrl = "/origin_code_all";
+var originAirportUrl = "/origin_code_expanded";
 
 d3.json(originAirportUrl).then(function(data) {
   console.log(data)
@@ -14,14 +14,19 @@ d3.json(originAirportUrl).then(function(data) {
     return mean_arrival_delay * 3500;
   }
 
+  function markerSize3(percent_flight_delay) {
+    return percent_flight_delay * 500;
+  }
 
-  // Define arrays to hold created city and state markers
+
+  // Define arrays to hold created flight count and delay markers
   var flightCountMarkers = [];
   var meanArrivalDelayMarkers = [];
+  var percentDelayedFlights = [];
 
-  // Loop through locations and create city and state markers
+  // Loop through locations and flight count and delay markers
   for (var i = 0; i < data.length; i++) {
-    // Setting the marker radius for the state by passing population into the markerSize function
+    // Setting the marker radius for the delay by passing mean arrival delay into the markerSize function
     meanArrivalDelayMarkers.push(
       L.circle([data[i].origin_latitude, data[i].origin_longitude], {
         stroke: false,
@@ -32,7 +37,7 @@ d3.json(originAirportUrl).then(function(data) {
       }).bindPopup("<h1>" + data[i].origin_airport_name + "</h1> <hr> <h3>Mean Arrival Delay: " + data[i].mean_arrival_delay + "</h3>")    //"</h3> <h3>"
     );
 
-    // Setting the marker radius for the city by passing population into the markerSize function
+    // Setting the marker radius for the flight count by passing flight_count into the markerSize function
     flightCountMarkers.push(
       L.circle([data[i].origin_latitude, data[i].origin_longitude], {
         stroke: false,
@@ -41,6 +46,15 @@ d3.json(originAirportUrl).then(function(data) {
         fillColor: "purple",
         radius: markerSize(data[i].flight_count)
       }).bindPopup("<h1>" + data[i].origin_airport_name + " (" +  data[i].origin_airport + ")" + "</h1> <hr> <h3>" + data[i].origin_city + ", " +  data[i].origin_state + "</h3> <hr> <h3>Flight Count: " + data[i].flight_count + "</h3>")
+    );
+    percentDelayedFlights.push(
+      L.circle([data[i].origin_latitude, data[i].origin_longitude], {
+        stroke: false,
+        fillOpacity: 0.6,
+        color: "teal",
+        fillColor: "teal",
+        radius: markerSize3(data[i].percent_delayed_flights)
+      }).bindPopup("<h1>" + data[i].origin_airport_name + "</h1> <hr> <h3>Delayed Flight Percentage: " + data[i].percent_delayed_flights + "%</h3>")    //"</h3> <h3>"
     );
   }
 
@@ -59,9 +73,10 @@ d3.json(originAirportUrl).then(function(data) {
     accessToken: API_KEY
   });
 
-  // Create two separate layer groups: one for cities and one for states
+  // Create three separate layer groups: one for mean arrival delay and one for flight count
   var meanArrivalDelay = L.layerGroup(meanArrivalDelayMarkers);
   var flightCount = L.layerGroup(flightCountMarkers);
+  var percentDelay = L.layerGroup(percentDelayedFlights);
 
   // Create a baseMaps object
   var baseMaps = {
@@ -71,15 +86,16 @@ d3.json(originAirportUrl).then(function(data) {
 
   // Create an overlay object
   var overlayMaps = {
+    "Flights per Year": flightCount,
     "Mean Arrival Delay": meanArrivalDelay,
-    "Flights per Year": flightCount
+    "Percent Delayed Flights": percentDelay
   };
 
   // Define a map object
   var myMap = L.map("map", {
     center: [37.09, -95.71],
     zoom: 5,
-    layers: [darkmap, meanArrivalDelay, flightCount]
+    layers: [darkmap, flightCount, meanArrivalDelay]
   });
 
   // Pass our map layers into our layer control
@@ -675,7 +691,7 @@ d3.json(barUrl, function (d, i, columns) {
   }).then(function(data) {
     console.log(data)
 
-  var svg = d3.select("svg"),
+  var svg = d3.select("svg"),   ////
   margin = { top: 20, right: 20, bottom: 30, left: 40 },
   width = +svg.attr("width") - margin.left - margin.right,
   height = +svg.attr("height") - margin.top - margin.bottom,

@@ -150,13 +150,67 @@ def origin_metadata_all():
         origin_metadata["origin_state"] = result[3]
         origin_metadata["origin_latitude"] = result[4]
         origin_metadata["origin_longitude"] = result[5]
-        origin_metadata["mean_arrival_delay"] = result[6]
+        origin_metadata["mean_arrival_delay"] = round(result[6], 2)
         origin_metadata["flight_count"] = result[7]
-        origin_metadata["flight_count_delay_ratio"] = result[8]
+        origin_metadata["flight_count_delay_ratio"] = round(result[8], 2)
         airport_all.append(origin_metadata)
 
     #print(airport_all)
     return jsonify(airport_all)
+
+
+
+# added more stats early late and percent
+@app.route("/origin_code_expanded")
+def origin_metadata_expanded():
+    """Return the origin code metadata for a given origin_airport."""
+    sel = [
+        OriginsExp.origin_airport,
+        OriginsExp.origin_airport_name,
+        OriginsExp.origin_city,
+        OriginsExp.origin_state,
+        OriginsExp.origin_latitude,
+        OriginsExp.origin_longitude,
+        OriginsExp.mean_arrival_delay,
+        OriginsExp.flight_count,
+        OriginsExp.mean_delay_time_per_flight,
+        OriginsExp.orig_count_early_flights,
+        OriginsExp.mean_early_arrival_time,
+        OriginsExp.orig_count_delayed_flights,
+        OriginsExp.mean_arrival_delay_time,
+        OriginsExp.percent_early_flights,
+        OriginsExp.percent_delayed_flights,
+        OriginsExp.mean_early_arrival_time_per_flight,
+        OriginsExp.mean_arrival_delay_time_per_flight,
+    ]
+
+    results = db.session.query(*sel).all()
+
+    # Create a dictionary entry for each row of metadata information
+    airport_all_exp = []
+    for result in results:
+        origin_metadata_exp = {}
+        origin_metadata_exp["origin_airport"] = result[0]  #(round(answer, 2))
+        origin_metadata_exp["origin_airport_name"] = result[1]
+        origin_metadata_exp["origin_city"] = result[2]
+        origin_metadata_exp["origin_state"] = result[3]
+        origin_metadata_exp["origin_latitude"] = result[4]
+        origin_metadata_exp["origin_longitude"] = result[5]
+        origin_metadata_exp["mean_arrival_delay"] = round(result[6], 2)
+        origin_metadata_exp["flight_count"] = result[7]
+        origin_metadata_exp["mean_delay_time_per_flight"] = round(result[8], 4)
+        origin_metadata_exp["orig_count_early_flights"] = result[9]
+        origin_metadata_exp["mean_early_arrival_time"] = round(result[10], 2)
+        origin_metadata_exp["orig_count_delayed_flights"] = result[11]
+        origin_metadata_exp["mean_arrival_delay_time"] = round(result[12], 2)
+        origin_metadata_exp["percent_early_flights"] = round(result[13], 2)
+        origin_metadata_exp["percent_delayed_flights"] = round(result[14], 2)
+        origin_metadata_exp["mean_early_arrival_time_per_flight"] = round(result[15], 4)
+        origin_metadata_exp["mean_arrival_delay_time_per_flight"] = round(result[16], 4)
+        airport_all_exp.append(origin_metadata_exp)
+
+    #print(airport_all_exp)
+    return jsonify(airport_all_exp)
 
 
 # LINE CHART end point
@@ -355,7 +409,7 @@ def tobs():
     #print(rank_origin_delay)
     return jsonify(rank_origin_delay)
 
-    
+
 
 if __name__ == "__main__":
     app.run(debug=True)

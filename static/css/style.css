@@ -135,7 +135,7 @@ h1{
 
 /* Donut1 Chart CSS*/
 
-body {
+/* body {
   font-family: 'Open Sans Condensed', sans-serif;
 }
 .title-holder {
@@ -149,7 +149,7 @@ body {
 }
 
 /* legend */
-.legend {
+/* .legend {
   font-size: 20px;
 }
 rect {
@@ -158,10 +158,10 @@ rect {
 }
 rect.disabled {
   fill: transparent !important;
-}
+} */
 
 /* chart */
-#chart {
+/* #chart {
   height: auto 800px;
   margin: 0 auto;
   position: relative;
@@ -196,7 +196,7 @@ rect.disabled {
   padding-top: 50px;
   text-align: relative;
   list-style-type: none;
-} 
+}   */
 
 
 /* Donut2 Chart CSS*/
