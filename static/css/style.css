@@ -1,0 +1,293 @@
+/* remove default margin and padding from body */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* set map, body, and html to 100% of the screen size */
+#flight_map {
+  height: 500px !important;
+  /*width: 500px !important;*/
+}
+
+/* Pie Chart CSS*/
+
+/* body {
+  font-family: 'Open Sans Condensed', sans-serif;
+} */
+.title-holder {
+  text-align: center;
+}
+.title {
+  font-family: 'Varela Round';
+}
+.subtitle {
+  font-size: 9px;
+}
+.font {
+  font-size: 9px;
+}
+
+/* legend */
+.legend {
+  font-size: 9px;
+}
+rect {
+  cursor: pointer; 
+  stroke-width: 2;
+}
+rect.disabled {
+  fill: transparent !important;
+}
+
+/* chart */
+#pieChart {
+  height: auto;
+  margin: 0 auto;
+  position: left;
+  display: block;
+  width: auto;
+}
+
+/* tooltip */
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 18px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 120px;
+  z-index: 10;
+}
+
+.footer {
+  padding-top: 50px;
+  text-align: center;
+  list-style-type: none;
+}
+
+
+
+/* Line Chart CSS*/
+
+/* html,
+
+body {
+  padding: 10px;
+  margin: 0px;
+} */
+h1{
+  color:#64a19d;
+  font-style: 'Varela Round';
+}
+.background{
+  background-image: url("../images/Flight1.jpg");
+  background-repeat: no-repeat;
+  background-size:auto;
+  opacity:20px;
+}
+
+.axis {
+  font: 14px 'Varela Round';
+}
+
+.line {
+  fill: none;
+  stroke:darkblue;  
+  stroke-width: 20px;
+}
+
+.axisText {
+  font-family:'Varela Round';
+  font-weight: bold;
+  color: white;
+  fill:#030107;
+  text-anchor: middle;
+  font-size: large;
+}
+
+#selectButton{
+  font-family:'Varela Round'; 
+  font-size: 15px;
+  background-color:#64a19d;
+  border-block-color: black;
+}
+
+#display-result{
+  font-family:'Varela Round';
+  font-weight: bold;
+  font-size:1.25rem;
+  text-align: center;
+
+}
+
+
+
+/* Donut1 Chart CSS*/
+
+body {
+  font-family: 'Varela Round';
+}
+.title-holder {
+  text-align: relative;
+}
+.title {
+  font-family: 'Varela Round';
+}
+.font {
+  font-size: 20px;
+}
+
+/* legend */
+.legend {
+  font-size: 20px;
+}
+rect {
+  cursor: pointer; 
+  stroke-width: 2;
+}
+rect.disabled {
+  fill: transparent !important;
+}
+
+/* chart */
+#chart {
+  height: auto 800px;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  width: auto 800px; 
+}
+
+.arc text {
+  font: 10px sans-serif;
+  text-anchor: middle;
+}
+
+.arc path {
+  stroke: #fff;
+}
+
+.toolTip {
+  position: absolute;
+  display: none;
+  width: auto;
+  height: auto;
+  background: none repeat scroll 0 0 white;
+  border: 0 none;
+  border-radius: 8px 8px 8px 8px;
+  box-shadow: -3px 3px 15px #888888;
+  color: black;
+  font: 12px sans-serif;
+  padding: 5px;
+  text-align: center;
+}
+.footer {
+  padding-top: 50px;
+  text-align: relative;
+  list-style-type: none;
+} 
+
+
+/* Donut2 Chart CSS*/
+
+
+body {
+  font-family: 'Varela Round';
+}
+.title-holder {
+  text-align: center;
+}
+.title {
+  font-family: 'Varela Round';
+}
+.font {
+  font-size: 20px;
+}
+
+/* legend */
+.legend {
+  font-size: 20px;
+}
+rect {
+  cursor: pointer; 
+  stroke-width: 2;
+}
+rect.disabled {
+  fill: transparent !important;
+}
+
+/* chart */
+#chart {
+  height: auto 800px;
+  margin: 0 auto;
+  position: relative;
+  display: block;
+  width: auto 800px; 
+}
+
+/* tooltip */
+.tooltip {
+  background: #eee;
+  box-shadow: 0 0 5px #999999;
+  color: #333;
+  display: none;
+  font-size: 18px;
+  left: 130px;
+  padding: 10px;
+  position: absolute;
+  text-align: center;
+  top: 95px;
+  width: 80px;
+  z-index: 10;
+}
+
+.footer {
+  padding-top: 50px;
+  text-align: center;
+  list-style-type: none;
+}
+
+
+/* Bar Chart CSS*/
+
+body,html{
+	margin: 0;
+	padding: 0;
+	font-family: 'Varela Round';
+	font-size: 0.95em;
+  text-align: center;
+}
+#barChart{
+	/* background-color: #F5F2EB;
+  border: 1px solid #CCC; */
+  height: 800 !important;
+}
+.bar{
+	fill: purple;
+	shape-rendering: crispEdges;
+}
+.bar-label{
+	fill: black;
+	text-anchor: middle;
+	font-size: 10px;
+}
+.axis path,
+.axis line{
+	fill: none;
+	stroke: black;
+	shape-rendering: crispEdges;
+}
+.gridline path,
+.gridline line{
+	fill: none;
+	stroke: #ccc;
+	shape-rendering: crispEdges;
+}
+
+

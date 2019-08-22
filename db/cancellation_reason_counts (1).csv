@@ -1,0 +1,15 @@
+airline,cancellation_reason_carrier,cancellation_reason_weather,cancellation_reason_national_air_system,cancellation_reason_security
+Alaska Airlines Inc.,334,18.0,18.0,
+American Airlines Inc.,2877,721.0,721.0,4.0
+American Eagle Airlines Inc.,2475,3385.0,3385.0,1.0
+Atlantic Southeast Airlines,3604,6544.0,6544.0,1.0
+Delta Air Lines Inc.,594,255.0,255.0,
+Frontier Airlines Inc.,302,,,
+Hawaiian Airlines Inc.,170,,,
+JetBlue Airways,883,906.0,906.0,1.0
+Skywest Airlines Inc.,3203,1193.0,1193.0,
+Southwest Airlines Co.,6108,1029.0,1029.0,12.0
+Spirit Air Lines,654,279.0,279.0,3.0
+US Airways Inc.,1007,570.0,570.0,
+United Air Lines Inc.,2869,382.0,382.0,
+Virgin America,154,357.0,357.0,
